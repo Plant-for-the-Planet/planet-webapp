@@ -42,6 +42,8 @@ export interface TreeDonationProps {
   setPaymentType: Function;
   isPaymentOptionsLoading: boolean;
   token:any;
+  recurrencyMnemonic:String;
+  setRecurrencyMnemonic:Function;
   donationID:any;
   setDonationID:Function;
 }
@@ -61,6 +63,7 @@ export interface PaymentDetailsProps {
   country: string;
   isTaxDeductible: Boolean;
   token:any;
+  recurrencyMnemonic:String;
   donationID:any;
   setDonationID:Function;
   shouldCreateDonation:Boolean;
@@ -78,6 +81,8 @@ export interface ContactDetailsPageProps {
   setIsCompany: Function;
   country: string;
   isTaxDeductible: Boolean;
+  token:any;
+  recurrencyMnemonic:String;
 }
 
 export interface ThankYouProps {
@@ -101,4 +106,5 @@ export interface CreateDonationFunctionProps {
   setPaymentError: Function;
   setDonationID:any;
   token: any | null;
+  recurrencyMnemonic:String;
 }

@@ -5,12 +5,11 @@ import { PaymentDetailsProps } from '../../common/types/donations';
 import styles from './../styles/PaymentDetails.module.scss';
 import { createDonationFunction, payDonationFunction } from '../components/PaymentFunctions';
 import i18next from '../../../../i18n';
-import getFormatedCurrency from '../../../utils/countryCurrency/getFormattedCurrency';
-import { getFormattedNumber } from '../../../utils/getFormattedNumber';
 import { paypalCurrencies } from '../../../utils/paypalCurrencies';
 import CardPayments from '../components/paymentMethods/CardPayments';
 import { Elements } from '@stripe/react-stripe-js';
 import getStripe from '../../../utils/stripe/getStripe';
+import ShowTreeCount from '../components/ShowTreeCount';
 import PaymentMethodTabs from '../components/paymentMethods/PaymentMethodTabs';
 import SepaPayments from '../components/paymentMethods/SepaPayments';
 import PaypalPayments from '../components/paymentMethods/PaypalPayments';
@@ -34,6 +33,7 @@ function PaymentDetails({
   country,
   isTaxDeductible,
   token,
+  recurrencyMnemonic,
   donationID,
   setDonationID,
   shouldCreateDonation,
@@ -76,7 +76,8 @@ function PaymentDetails({
         setIsPaymentProcessing,
         setPaymentError,
         setDonationID,
-        token
+        token,
+        recurrencyMnemonic
       });
       setShouldCreateDonation(false)
     }
@@ -91,9 +92,9 @@ function PaymentDetails({
       setPaymentError,
       t,
       paymentSetup,
+      recurrencyMnemonic,
       donationID,
       token,
-      setDonationStep,
       donorDetails
     })
   }
@@ -119,16 +120,7 @@ function PaymentDetails({
             <div className={styles.paymentError}>{paymentError}</div>
           )}
 
-          <div className={styles.finalTreeCount}>
-            <div className={styles.totalCost}>
-              {getFormatedCurrency(i18n.language, currency, treeCount * treeCost)}
-            </div>
-            <div className={styles.totalCostText}>
-              {t('donate:fortreeCountTrees', {
-                treeCount: getFormattedNumber(i18n.language, Number(treeCount)),
-              })}
-            </div>
-          </div>
+          <ShowTreeCount treeCost={treeCost} treeCount={treeCount} currency={currency} recurrencyMnemonic={recurrencyMnemonic} />
 
           <PaymentMethodTabs
             paymentType={paymentType}
@@ -137,7 +129,7 @@ function PaymentDetails({
             showGiroPay={country === 'DE' && paymentSetup?.gateways.stripe.methods.includes("stripe_giropay")}
             showSepa={paymentSetup?.gateways.stripe.methods.includes("stripe_sepa")}
             showSofort={sofortCountries.includes(country) && paymentSetup?.gateways.stripe.methods.includes("stripe_sofort")}
-            showPaypal={paypalCurrencies.includes(currency) && paymentSetup?.gateways.paypal}
+            showPaypal={paypalCurrencies.includes(currency) && paymentSetup?.gateways.paypal && recurrencyMnemonic === 'none'}
           />
 
           {donationID && (

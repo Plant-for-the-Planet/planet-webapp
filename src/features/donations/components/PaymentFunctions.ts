@@ -95,11 +95,12 @@ export async function createDonationFunction({
   giftDetails,
   setIsPaymentProcessing,
   setPaymentError,
+  recurrencyMnemonic,
   setDonationID,
   token
 }: CreateDonationFunctionProps) {
   const taxDeductionCountry = isTaxDeductible ? country : null;
-  const donationData = createDonationData({ project, treeCount, treeCost, currency, donorDetails, taxDeductionCountry, isGift, giftDetails })
+  const donationData = createDonationData({ project, treeCount, treeCost, currency, donorDetails, taxDeductionCountry, isGift, giftDetails,recurrencyMnemonic })
   try {
     const donation = await createDonation(donationData, token);
     if (donation) {
@@ -135,7 +136,8 @@ export function createDonationData({
   donorDetails,
   taxDeductionCountry,
   isGift,
-  giftDetails
+  giftDetails,
+  recurrencyMnemonic
 }: any) {
   let donationData = {
     type: 'trees',
@@ -145,6 +147,12 @@ export function createDonationData({
     currency,
     donor: { ...donorDetails },
   };
+  if(recurrencyMnemonic){
+    donationData = {
+      ...donationData,
+      recurrencyMnemonic,
+    };
+  }
   if (taxDeductionCountry) {
     donationData = {
       ...donationData,

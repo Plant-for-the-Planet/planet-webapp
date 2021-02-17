@@ -6,6 +6,7 @@ import PaymentDetails from './screens/PaymentDetails';
 import ThankYou from './screens/ThankYou';
 import TreeDonation from './screens/TreeDonation';
 import { useAuth0 } from '@auth0/auth0-react';
+import tenantConfig from '../../../tenant.config';
 
 interface Props {
   onClose: any;
@@ -23,6 +24,8 @@ function DonationsPopup({
   const [donationID, setDonationID] = React.useState(null);
   const [shouldCreateDonation, setShouldCreateDonation] = React.useState(false);
 
+
+  const config = tenantConfig();
 
   const {
     isLoading,
@@ -58,7 +61,15 @@ function DonationsPopup({
 
   const [token, setToken] = React.useState('');
 
-  const [userProfile, setUserprofile] = React.useState(null)
+  // Recurrecny Setup
+  const [recurrencyMnemonic, setRecurrencyMnemonic] = React.useState<any>(null);
+  React.useEffect(()=>{
+    if(token && config.allowRecurrecny){
+      setRecurrencyMnemonic('none')
+    }
+  },[token])
+
+  const [userProfile,setUserprofile] = React.useState(null)
 
   //  to load payment data
   React.useEffect(() => {
@@ -161,6 +172,8 @@ function DonationsPopup({
     setPaymentType,
     isPaymentOptionsLoading,
     token,
+    recurrencyMnemonic, 
+    setRecurrencyMnemonic,
     donationID, 
     setDonationID
   };
@@ -176,6 +189,8 @@ function DonationsPopup({
     setIsCompany,
     country,
     isTaxDeductible,
+    token,
+    recurrencyMnemonic, 
   };
 
   const PaymentDetailsProps = {
@@ -193,6 +208,7 @@ function DonationsPopup({
     country,
     isTaxDeductible,
     token,
+    recurrencyMnemonic,
     donationID, 
     setDonationID,
     shouldCreateDonation,
