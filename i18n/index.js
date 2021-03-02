@@ -19,8 +19,8 @@ export default new NextI18Next({
     order: ['cookie', 'localStorage', 'navigator'],
 
     // next-i18next by default searches for the 'next-i18next' cookie on server requests
-    lookupCookie: 'language',
-    lookupLocalStorage: 'language',
+    lookupCookie: '_planet-lang',
+    lookupLocalStorage: '_planet-lang',
 
     // cache the language in cookies and local storage
     caches: ['cookie', 'localStorage'],
