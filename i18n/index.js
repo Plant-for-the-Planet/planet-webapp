@@ -25,10 +25,10 @@ export default new NextI18Next({
 
     // cache the language in cookies and local storage
     //caches: ['cookie', 'localStorage'],
-    caches: 'localStorage',
-    cookieSameSite: 'none',
-    cookieSecure: true,
-    cookieExpirationDate: new Date(firstDay.getTime() + 7 * 24 * 60 * 60 * 1000),
+    caches: ['localStorage'],
+    //cookieSameSite: 'none',
+    //cookieSecure: true,
+    //cookieExpirationDate: new Date(firstDay.getTime() + 7 * 24 * 60 * 60 * 1000),
   },
   react: {
     // trigger a rerender when language is changed
