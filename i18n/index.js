@@ -16,14 +16,16 @@ export default new NextI18Next({
   detection: {
     // check if language is cached in cookies, if not check local storage,
     // last retrieve from browser language
-    order: ['cookie', 'localStorage', 'navigator'],
+    //order: ['cookie', 'localStorage', 'navigator'],
+    order: ['localStorage', 'navigator'],
 
     // next-i18next by default searches for the 'next-i18next' cookie on server requests
-    lookupCookie: '_planet-lang',
+    //lookupCookie: '_planet-lang',
     lookupLocalStorage: '_planet-lang',
 
     // cache the language in cookies and local storage
-    caches: ['cookie', 'localStorage'],
+    //caches: ['cookie', 'localStorage'],
+    caches: 'localStorage',
     cookieSameSite: 'none',
     cookieSecure: true,
     cookieExpirationDate: new Date(firstDay.getTime() + 7 * 24 * 60 * 60 * 1000),
