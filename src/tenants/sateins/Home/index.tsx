@@ -21,7 +21,7 @@ function Home({ leaderboard, tenantScore }: Props): ReactElement {
     const LandingSectionData = {
         mainTitleSubText: 'EIN EURO = EIN BAUM',
         para: <span>Gemeinsam mit den Zuschauer*innen möchte der Sender SAT.1 rekordverdächtig viele Bäume pflanzen. Schon ein Euro genügt, um den neuen Wald auf der mexikanischen Halbinsel Yucatán wachsen zu lassen.</span>,
-        imagePath: '/tenants/sateins/images/alhambra.jpg'
+        imagePath: '/tenants/sateins/images/yucatan-aerial.jpg'
     }
 
     const FeaturesSectionData = {
