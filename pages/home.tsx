@@ -58,6 +58,7 @@ export default function Home(initialized: Props) {
       case 'culchacandela':
       case 'lacoqueta':
       case 'ulmpflanzt':
+      case 'janegoodall':
         HomePage = BasicHome;
         return <HomePage leaderboard={leaderboard} tenantScore={tenantScore} />;
       default:
