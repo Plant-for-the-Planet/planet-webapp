@@ -26,7 +26,7 @@ const config = {
   },
   header: {
     isSecondaryTenant: true,
-    tenantLogoURL: `/tenants/janegoodall/logo.png`,
+    tenantLogoURL: `/tenants/janegoodall/logonew.jpg`,
     tenantLogoLink: 'https://www.janegoodall.org/',
     items: {
       home: {
