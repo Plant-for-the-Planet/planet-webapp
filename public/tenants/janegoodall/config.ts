@@ -12,7 +12,7 @@ const config = {
     secondaryFontURL: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap",
   },
   meta: {
-    title: 'Jane Goodall Institute',
+    title: 'Jane Trees',
     description:
       '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
     // image: `/tenants/janegoodall/background.jpg`,
@@ -22,12 +22,12 @@ const config = {
   },
   home: {
     descriptionTitle:"",
-    image: `/tenants/janegoodall/background.jpg`,
+    image: `${process.env.CDN_URL}/media/images/app/bg_layer.jpg`,
   },
   header: {
     isSecondaryTenant: true,
     tenantLogoURL: `/tenants/janegoodall/logo.png`,
-    tenantLogoLink: 'https://www.janegoodall.org/',
+    tenantLogoLink: 'https://www.janetrees.org/',
     items: {
       home: {
         title: 'home',
@@ -52,7 +52,7 @@ const config = {
       me:{
         title: 'me',
         onclick: '/me',
-        visible: false,
+        visible: true,
       }
     }
   },
