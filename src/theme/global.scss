@@ -220,6 +220,18 @@ video {
   font-weight: normal;
   font-style: normal;
 }
+.unDecadeFill{
+  fill: $undecadeFill;
+}
+
+.iconFillNone{
+  fill: none;
+  stroke: $primaryFontColor;
+}
+
+.iconFillColor{
+fill: $primaryFontColor;
+}
 
 .primaryButton,
 .secondaryButton {

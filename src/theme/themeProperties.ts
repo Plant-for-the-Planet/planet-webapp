@@ -22,17 +22,19 @@ const themeProperties = {
     light: '#fff',
     dark: '#000',
     dangerColor:'#e74c3c',
+    unDecadeFill: '#1d1d1b'
   },
   dark: {
     primaryFontColor: '#ffffff',
     dividerColor: '#101113',
     secondaryColor: '#ecb641',
-    blueishGrey: '#f2f2f7',
+    blueishGrey: '#101113',
     backgroundColor: '#343a40',
     highlightBackground: '#f2f2f2',
     light: '#fff',
     dark: '#000',
-    dangerColor:'#e74c3c',
+    dangerColor:'#00ef00',
+    unDecadeFill: '#fff'
   },
 };
 
