@@ -40,6 +40,57 @@
   width: 100%;
   background-color: $primaryColor;
   position: relative;
+  animation: expandImage 1s ease;
+  > .projectImageBlock {
+    animation: translateRight 1s ease;
+    left: 16px;
+  }
+  // transition: all 1s ease;
+  &.projectCollapsed {
+    height: 50px;
+    // transition: all 1s ease;
+    animation: collapseImage 1s ease;
+    > .projectImageBlock {
+      animation: translateLeft 1s ease;
+      left: 50px;
+    }
+  }
+}
+
+@keyframes collapseImage {
+  0% {
+    height: 160px;
+  }
+  100% {
+    height: 50px;
+  }
+}
+
+@keyframes expandImage {
+  0% {
+    height: 50px;
+  }
+  100% {
+    height: 160px;
+  }
+}
+
+@keyframes translateLeft {
+  0% {
+    left: 16px;
+  }
+  100% {
+    left: 50px;
+  }
+}
+
+@keyframes translateRight {
+  0% {
+    left: 50px;
+  }
+  100% {
+    left: 16px;
+  }
 }
 
 .projectImage:hover {
@@ -47,7 +98,7 @@
 }
 
 .projectImageFile {
-  height: 160px;
+  height: 100%;
   width: 100%;
   position: relative;
   background-size: cover;
@@ -119,7 +170,7 @@
   cursor: pointer;
 }
 
-.projectData{
+.projectData {
   max-width: 178px;
 }
 
